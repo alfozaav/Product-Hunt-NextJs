@@ -6,6 +6,7 @@ import { css } from '@emotion/core';
 
 import Buscar from '../UI/Buscar';
 import Navegation from './Navegation';
+import Boton from '../UI/Boton';
 
 const ContenedorHeader = styled.div`
     max-height: 1200px;
@@ -27,6 +28,9 @@ const Logo = styled.p`
 `;
 
 const Header = () => {
+
+    const user = false;
+
     return ( 
         <header
             css={css`
@@ -35,7 +39,12 @@ const Header = () => {
             `}
         >
             <ContenedorHeader>
-                <div>
+                <div
+                    css={css`
+                        display: flex;
+                        align-items: center;
+                    `}
+                >
                     <Link href="/">
                         <Logo>P</Logo>
                     </Link>
@@ -45,13 +54,32 @@ const Header = () => {
                     <Navegation />
                 </div>
 
-                <div>
-                    <p>Hola: Alfonso</p>
+                <div
+                    css={css`
+                        display: flex;
+                        align-items: center;
+                    `}
+                >
+                    { user ? (
+                        <>
+                            <p
+                                css={css`
+                                    margin-right: 2rem;
+                                `}
+                            >Hola: Alfonso</p>
 
-                    <button type="button">Cerrar Sesión</button>
-
-                    <Link href="/">Login</Link>
-                    <Link href="/">Crear Cuenta</Link>
+                            <Boton bgColor="true">Cerrar Sesión</Boton>
+                        </>
+                    ) : (
+                        <>
+                             <Link href="/login">
+                                <Boton bgColor="true">Login</Boton>
+                            </Link>
+                            <Link href="/crear-cuenta">
+                                <Boton>Crear Cuenta</Boton>
+                            </Link>
+                        </>
+                    ) }
                 </div>
             </ContenedorHeader>
         </header>
