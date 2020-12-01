@@ -85,7 +85,7 @@ const NuevoProducto = () => {
         .storage
         .ref("productos")
         .child(nombre)
-        .getDownloadURL()
+        .taskSnapshot.getDownloadURL()
         .then(url => {
           console.log(url);
           guardarUrlImagen(url);
