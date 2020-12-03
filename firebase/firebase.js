@@ -4,7 +4,6 @@ import 'firebase/firestore';
 import 'firebase/storage';
 
 import firebaseConfig from './config';
-import FirebaseContext from './context';
 
 class Firebase {
     constructor() {

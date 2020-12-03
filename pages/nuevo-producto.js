@@ -15,7 +15,7 @@ import validarCrearProducto from '../validacion/validarCrearProducto';
 const STATE_INICIAL = {
     nombre: '',
     empresa: '',
-    // imagen: '',
+    imagen: '',
     url: '',
     descripcion: ''
 }
@@ -23,10 +23,10 @@ const STATE_INICIAL = {
 const NuevoProducto = () => {
 
   //  State de las imágenes
-    const [nombreImagen, guardarNombreImagen] = useState('');
+    const [nombreimagen, guardarNombre] = useState('');
     const [subiendo, guardarSubiendo] = useState(false);
     const [progreso, guardarProgreso] = useState(0);
-    const [urlImagen, guardarUrlImagen] = useState('');
+    const [urlimagen, guardarUrlImagen] = useState('');
 
     const [error, guardarError] = useState(false);
 
@@ -52,7 +52,7 @@ const NuevoProducto = () => {
           nombre,
           empresa,
           url,
-          urlImagen,
+          urlimagen,
           descripcion,
           votos: 0,
           comentarios: [],
@@ -80,18 +80,17 @@ const NuevoProducto = () => {
     const handleUploadSuccess = nombre => {
       guardarProgreso(100);
       guardarSubiendo(false);
-      guardarNombreImagen(nombre);
+      guardarNombre(nombre);
       firebase
         .storage
         .ref("productos")
         .child(nombre)
-        .taskSnapshot.getDownloadURL()
+        .getDownloadURL()
         .then(url => {
           console.log(url);
           guardarUrlImagen(url);
         } );
     }
-
 
 
     return (
